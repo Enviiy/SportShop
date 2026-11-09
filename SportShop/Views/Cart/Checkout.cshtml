@@ -1,0 +1,14 @@
+﻿@model SportShop.Models.CheckoutViewModel
+@{
+    ViewBag.Title = "Оформление заказа";
+}
+<div class="box">
+    <h2>Оформление заказа</h2>
+    <form asp-action="Checkout" method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div><label asp-for="Name"></label><input asp-for="Name" /><span asp-validation-for="Name"></span></div>
+        <div><label asp-for="Phone"></label><input asp-for="Phone" /><span asp-validation-for="Phone"></span></div>
+        <div><label asp-for="Address"></label><input asp-for="Address" /><span asp-validation-for="Address"></span></div>
+        <button type="submit">Подтвердить заказ</button>
+    </form>
+</div>

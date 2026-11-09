@@ -1,0 +1,19 @@
+﻿@model IEnumerable<SportShop.Models.ProductDto>
+@{
+    ViewBag.Title = "Товары";
+}
+<div class="box">
+    <h2>@ViewBag.Title</h2>
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="col-3 col-6-medium">
+                <div class="product-card">
+                    <img src="~/img/@(p.Photo ?? "placeholder.jpg")" />
+                    <h3><a asp-action="Show" asp-route-id="@p.Id">@p.Title</a></h3>
+                    <p>@p.Price.ToString("C")</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

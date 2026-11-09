@@ -1,0 +1,22 @@
+﻿@model SportShop.Domain.Entities.Brand
+@{
+    ViewBag.Title = Model.Title;
+    var products = (IEnumerable<SportShop.Models.ProductDto>)ViewBag.Products;
+}
+<div class="box">
+    <h2>@Model.Title</h2>
+    <p>@Model.Description</p>
+    <h3>Товары бренда</h3>
+    <div class="row">
+        @foreach (var p in products)
+        {
+            <div class="col-3 col-6-medium">
+                <div class="product-card">
+                    <img src="~/img/@(p.Photo ?? "placeholder.jpg")" />
+                    <h4><a asp-controller="Products" asp-action="Show" asp-route-id="@p.Id">@p.Title</a></h4>
+                    <p>@p.Price.ToString("C")</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

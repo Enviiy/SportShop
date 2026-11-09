@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SportShop.Domain.Entities.Review>
+@{
+    ViewBag.Title = "Отзывы";
+}
+<div class="box">
+    <h2>Отзывы клиентов</h2>
+    @if (TempData["Success"] != null)
+    {
+        <p style="color:green">@TempData["Success"]</p>
+    }
+
+    @foreach (var r in Model)
+    {
+        <blockquote>
+            <p>@r.Text</p>
+            <footer>
+                @r.AuthorName — @r.Rating/5
+                @if (r.Product != null)
+                {
+                    <span>
+                        · <a asp-controller="Products" asp-action="Show"
+                             asp-route-id="@r.ProductId">@r.Product.Title</a>
+                    </span>
+                }
+            </footer>
+        </blockquote>
+    }
+</div>

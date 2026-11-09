@@ -1,0 +1,16 @@
+﻿@model SportShop.Models.LoginViewModel
+@{
+    ViewBag.Title = "Вход";
+}
+<div class="box">
+    <h2>Вход</h2>
+    <form asp-action="Login" method="post">
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+        <div asp-validation-summary="ModelOnly"></div>
+        <div><label asp-for="UserName"></label><input asp-for="UserName" /><span asp-validation-for="UserName"></span></div>
+        <div><label asp-for="Password"></label><input asp-for="Password" /><span asp-validation-for="Password"></span></div>
+        <div><label asp-for="RememberMe"></label><input asp-for="RememberMe" /></div>
+        <button type="submit">Войти</button>
+    </form>
+    <p><a asp-action="Register">Регистрация</a></p>
+</div>

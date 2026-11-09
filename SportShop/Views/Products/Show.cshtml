@@ -1,0 +1,66 @@
+﻿@model SportShop.Models.ProductDto
+@{
+    ViewBag.Title = Model.Title;
+    var reviews = (IEnumerable<SportShop.Domain.Entities.Review>)ViewBag.Reviews;
+}
+
+<article class="box">
+    <h2>@Model.Title</h2>
+    @if (!string.IsNullOrEmpty(Model.CategoryName))
+    {
+        <p>Категория: <b>@Model.CategoryName</b></p>
+    }
+    @if (!string.IsNullOrEmpty(Model.BrandName))
+    {
+        <p>Бренд: <b>@Model.BrandName</b></p>
+    }
+    @if (!string.IsNullOrEmpty(Model.Size))
+    {
+        <p>Размер: <b>@Model.Size</b></p>
+    }
+    <p>
+        Цена: <b>@Model.Price.ToString("C")</b>
+        @if (Model.OldPrice.HasValue)
+        {
+            <s>@Model.OldPrice.Value.ToString("C")</s>
+        }
+    </p>
+
+    <img src="~/img/@(Model.Photo ?? "placeholder.jpg")"
+         style="display:block;margin:0 auto;max-width:100%;" />
+
+    <p>@Model.ShortDescription</p>
+    @Html.Raw(Model.Description)
+
+    <form asp-controller="Cart" asp-action="Add" method="post">
+        <input type="hidden" name="productId" value="@Model.Id" />
+        <input type="number" name="quantity" value="1" min="1" />
+        <button type="submit">Добавить в корзину</button>
+    </form>
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <p>
+            <a asp-controller="Reviews" asp-action="Create"
+               asp-route-productId="@Model.Id">Оставить отзыв</a>
+        </p>
+    }
+</article>
+
+<section class="box">
+    <h2>Отзывы</h2>
+    @if (!reviews.Any())
+    {
+        <p>Пока нет отзывов.</p>
+    }
+    else
+    {
+        @foreach (var r in reviews)
+        {
+            <blockquote>
+                <p>@r.Text</p>
+                <footer>@r.AuthorName — @r.Rating/5</footer>
+            </blockquote>
+        }
+    }
+</section>

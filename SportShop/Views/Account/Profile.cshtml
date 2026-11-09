@@ -1,0 +1,19 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityUser
+@{
+    ViewBag.Title = "Личный кабинет";
+}
+<div class="box">
+    <h2>Личный кабинет</h2>
+    <p><b>Email:</b> @Model.Email</p>
+    <p><b>Логин:</b> @Model.UserName</p>
+
+    <h3>Действия</h3>
+    <ul>
+        <li><a asp-action="Orders">Мои заказы</a></li>
+        <li>
+            <form asp-action="Logout" method="post" style="display:inline">
+                <button type="submit">Выйти</button>
+            </form>
+        </li>
+    </ul>
+</div>

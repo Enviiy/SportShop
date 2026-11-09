@@ -1,0 +1,29 @@
+﻿@inject IConfiguration config
+@{
+    var appConfig = config.GetSection("Project").Get<SportShop.Infrastructure.AppConfig>();
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(ViewBag.Title ?? appConfig?.company.CompanyName)</title>
+    @await Html.PartialAsync("_CssPartial")
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+    
+    <!-- Шапка -->
+    @await Html.PartialAsync("_HeaderPartial")
+
+    <!-- Основной контент -->
+    <main class="container my-5 flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <!-- Подвал -->
+    @await Html.PartialAsync("_FooterPartial")
+
+    @await Html.PartialAsync("_JsPartial")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

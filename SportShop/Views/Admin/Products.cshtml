@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SportShop.Domain.Entities.Product>
+@{
+    ViewBag.Title = "Товары";
+}
+<div class="box">
+    <h2>Товары</h2>
+    <p><a asp-action="ProductsEdit" asp-route-id="0">+ Добавить товар</a></p>
+    <table>
+        <thead><tr><th>ID</th><th>Название</th><th>Цена</th><th>Акция</th><th></th></tr></thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Title</td>
+                    <td>@p.Price.ToString("C")</td>
+                    <td>@(p.IsPromo ? "Да" : "—")</td>
+                    <td>
+                        <a asp-action="ProductsEdit" asp-route-id="@p.Id">Ред.</a>
+                        <form asp-action="ProductsDelete" method="post" style="display:inline"
+                              onsubmit="return confirm('Удалить товар?');">
+                            <input type="hidden" name="id" value="@p.Id" />
+                            <button type="submit">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SportShop.Domain.Entities.Brand>
+@{
+    ViewBag.Title = "Бренды";
+}
+<div class="box">
+    <h2>Бренды</h2>
+    @foreach (var b in Model)
+    {
+        <h3><a asp-action="Show" asp-route-id="@b.Id">@b.Title</a></h3>
+    }
+</div>

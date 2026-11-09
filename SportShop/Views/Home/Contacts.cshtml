@@ -1,0 +1,19 @@
+﻿@inject IConfiguration config
+@{
+    var appConfig = config.GetSection("Project").Get<SportShop.Infrastructure.AppConfig>();
+    ViewBag.Title = "Контакты";
+}
+
+<div class="box">
+    <h2>Контактная информация</h2>
+    <p>Телефон: <a href="tel:@appConfig?.company.CompanyPhoneShort">@appConfig?.company.CompanyPhone</a></p>
+    <p>Email: <a href="mailto:@appConfig?.company.CompanyEmail">@appConfig?.company.CompanyEmail</a></p>
+
+    <h3>Форма обратной связи</h3>
+    <form method="post" asp-controller="Home" asp-action="Feedback">
+        <div><label>Имя</label><input name="name" required /></div>
+        <div><label>Email</label><input type="email" name="email" required /></div>
+        <div><label>Сообщение</label><textarea name="message" required></textarea></div>
+        <button type="submit">Отправить</button>
+    </form>
+</div>

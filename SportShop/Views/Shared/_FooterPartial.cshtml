@@ -1,0 +1,28 @@
+﻿@inject IConfiguration config
+@{
+    var appConfig = config.GetSection("Project").Get<SportShop.Infrastructure.AppConfig>();
+}
+<footer class="bg-dark text-white py-4 mt-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5 class="text-uppercase fw-bold text-warning">@appConfig?.company.CompanyName</h5>
+                <p class="text-muted small">Спортивная одежда для побед каждый день. Качественные бренды, быстрая доставка.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Разделы</h5>
+                <ul class="list-unstyled">
+                    <li><a asp-controller="Home" asp-action="About" class="text-decoration-none text-light">О нас</a></li>
+                    <li><a asp-controller="Products" asp-action="Index" class="text-decoration-none text-light">Каталог</a></li>
+                    <li><a asp-controller="Home" asp-action="Contacts" class="text-decoration-none text-light">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Контакты</h5>
+                <p class="mb-1"><i class="bi bi-telephone"></i> @appConfig?.company.CompanyPhone</p>
+                <p class="mb-1"><i class="bi bi-envelope"></i> @appConfig?.company.CompanyEmail</p>
+                <p class="small text-muted mt-3">&copy; @DateTime.Now.Year — Все права защищены.</p>
+            </div>
+        </div>
+    </div>
+</footer>

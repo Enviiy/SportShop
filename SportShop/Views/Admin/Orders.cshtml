@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SportShop.Domain.Entities.Order>
+@{
+    ViewBag.Title = "Заказы";
+    var statuses = Html.GetEnumSelectList<SportShop.Domain.Enums.OrderStatusEnum>();
+}
+<div class="box">
+    <h2>Заказы</h2>
+    @foreach (var o in Model)
+    {
+        <article>
+            <h3>#@o.Id — @o.Title</h3>
+            <p>Клиент: @o.CustomerName, @o.Phone</p>
+            <p>Адрес: @o.Address</p>
+            <p>Сумма: @o.Total.ToString("C")</p>
+            <p>
+                Статус:
+                <form asp-action="UpdateOrderStatus" method="post" style="display:inline">
+                    <input type="hidden" name="id" value="@o.Id" />
+                    <select name="status">
+                        @foreach (var s in statuses)
+                        {
+                            <option value="@s.Value" selected="@(o.Status.ToString() == s.Text)">@s.Text</option>
+                        }
+                    </select>
+                    <button type="submit">Изменить</button>
+                </form>
+            </p>
+            <ul>
+                @foreach (var i in o.Items)
+                {
+                    <li>@i.Product?.Title × @i.Quantity = @((i.Price * i.Quantity).ToString("C"))</li>
+                }
+            </ul>
+        </article>
+    }
+</div>

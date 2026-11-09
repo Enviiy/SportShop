@@ -1,0 +1,15 @@
+﻿@model SportShop.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Регистрация";
+}
+<div class="box">
+    <h2>Регистрация</h2>
+    <form asp-action="Register" method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div><label asp-for="Email"></label><input asp-for="Email" /><span asp-validation-for="Email"></span></div>
+        <div><label asp-for="Password"></label><input asp-for="Password" /><span asp-validation-for="Password"></span></div>
+        <div><label asp-for="PasswordConfirm"></label><input asp-for="PasswordConfirm" /><span asp-validation-for="PasswordConfirm"></span></div>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    <p><a asp-action="Login">У меня есть аккаунт</a></p>
+</div>

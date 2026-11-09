@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SportShop.Domain.Entities.Brand>
+@{
+    ViewBag.Title = "Бренды";
+}
+<div class="box">
+    <h2>Бренды</h2>
+
+    @if (TempData["Error"] != null)
+    {
+        <p style="color:#c00">@TempData["Error"]</p>
+    }
+
+    <p><a asp-action="BrandsEdit" asp-route-id="0">+ Добавить бренд</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Логотип</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+                <tr>
+                    <td>@b.Id</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(b.Logo))
+                        {
+                            <img src="~/img/@b.Logo" alt="@b.Title" style="max-height:40px" />
+                        }
+                    </td>
+                    <td>@b.Title</td>
+                    <td>@b.Description</td>
+                    <td>
+                        <a asp-action="BrandsEdit" asp-route-id="@b.Id">Ред.</a>
+                        <form asp-action="BrandsDelete" method="post" style="display:inline"
+                              onsubmit="return confirm('Удалить бренд?');">
+                            <input type="hidden" name="id" value="@b.Id" />
+                            <button type="submit">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SportShop.Domain.Entities.Order>
+@{
+    ViewBag.Title = "Мои заказы";
+}
+<div class="box">
+    <h2>История заказов</h2>
+    @if (!Model.Any())
+    {
+        <p>У вас пока нет заказов.</p>
+    }
+    else
+    {
+        @foreach (var o in Model)
+        {
+            <article>
+                <h3>@o.Title</h3>
+                <p>Статус: <b>@o.Status</b></p>
+                <p>Сумма: @o.Total.ToString("C")</p>
+                <ul>
+                    @foreach (var i in o.Items)
+                    {
+                        <li>@i.Product?.Title × @i.Quantity = @((i.Price * i.Quantity).ToString("C"))</li>
+                    }
+                </ul>
+            </article>
+        }
+    }
+</div>

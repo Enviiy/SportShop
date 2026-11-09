@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Спасибо за обращение";
+}
+<div class="box">
+    <h2>Спасибо@(string.IsNullOrEmpty(ViewBag.Name as string) ? "" : $", {ViewBag.Name}")!</h2>
+    <p>Ваше сообщение получено. Мы свяжемся с вами в ближайшее время.</p>
+    <p><a asp-controller="Home" asp-action="Index">На главную</a> ·
+       <a asp-controller="Home" asp-action="Contacts">Назад к контактам</a></p>
+</div>
