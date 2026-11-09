@@ -2,8 +2,11 @@
 @{
     ViewBag.Title = "Отзывы";
 }
+
+<h2>Отзывы</h2>
+<hr>
+
 <div class="box">
-    <h2>Отзывы клиентов</h2>
     @if (TempData["Success"] != null)
     {
         <p style="color:green">@TempData["Success"]</p>

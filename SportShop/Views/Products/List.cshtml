@@ -1,9 +1,12 @@
 ﻿@model IEnumerable<SportShop.Models.ProductDto>
 @{
-    ViewBag.Title = "Товары";
+    ViewBag.Title = "Акции";
 }
+
+<h2>Акции</h2>
+<hr>
+
 <div class="box">
-    <h2>@ViewBag.Title</h2>
     <div class="row">
         @foreach (var p in Model)
         {

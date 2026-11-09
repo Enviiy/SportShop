@@ -2,8 +2,11 @@
 @{
     ViewBag.Title = "Бренды";
 }
+
+<h2>Бренды</h2>
+<hr>
+
 <div class="box">
-    <h2>Бренды</h2>
     @foreach (var b in Model)
     {
         <h3><a asp-action="Show" asp-route-id="@b.Id">@b.Title</a></h3>

@@ -2,27 +2,29 @@
 @{
     ViewBag.Title = "Мои заказы";
 }
-<div class="box">
-    <h2>История заказов</h2>
-    @if (!Model.Any())
+
+<h2>Мои заказы</h2>
+<hr/>
+
+@if (!Model.Any())
+{
+    <p>У вас пока нет заказов</p>
+    <a class="text-black" asp-controller="Products" asp-action="Index">Перейти в каталог</a>
+}
+else
+{
+    @foreach (var o in Model)
     {
-        <p>У вас пока нет заказов.</p>
+        <article>
+            <h3>@o.Title</h3>
+            <p>Статус: <b>@o.Status</b></p>
+            <p>Сумма: @o.Total.ToString("C")</p>
+            <ul>
+                @foreach (var i in o.Items)
+                {
+                    <li>@i.Product?.Title × @i.Quantity = @((i.Price * i.Quantity).ToString("C"))</li>
+                }
+            </ul>
+        </article>
     }
-    else
-    {
-        @foreach (var o in Model)
-        {
-            <article>
-                <h3>@o.Title</h3>
-                <p>Статус: <b>@o.Status</b></p>
-                <p>Сумма: @o.Total.ToString("C")</p>
-                <ul>
-                    @foreach (var i in o.Items)
-                    {
-                        <li>@i.Product?.Title × @i.Quantity = @((i.Price * i.Quantity).ToString("C"))</li>
-                    }
-                </ul>
-            </article>
-        }
-    }
-</div>
+}

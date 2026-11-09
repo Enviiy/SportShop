@@ -8,13 +8,14 @@
     string? search = ViewBag.Search;
 }
 
+<h2>Каталог</h2>
+<hr>
+
 <div class="row">
     <!-- Сайдбар с фильтрами -->
     <div class="col-lg-3 mb-4">
         <div class="card border-0 shadow-sm">
-            <div class="card-header bg-dark text-white fw-bold">
-                <i class="bi bi-funnel"></i> Фильтры
-            </div>
+            <div class="card-header bg-dark text-white">Фильтры</div>
             <div class="card-body">
                 <form method="get" asp-action="Index">
                     <div class="mb-3">
@@ -57,7 +58,7 @@
                             <option value="new" selected="@(ViewBag.Sort == "new")">Новинки</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-warning w-100 fw-bold">Применить</button>
+                    <button type="submit" class="btn btn-primary w-100">Применить</button>
                     <a asp-action="Index" class="btn btn-outline-secondary w-100 mt-2">Сбросить</a>
                 </form>
             </div>
@@ -66,7 +67,7 @@
 
     <!-- Сетка товаров -->
     <div class="col-lg-9">
-        <h2 class="fw-bold mb-4">Спортивная одежда</h2>
+        <h2 class="mb-4">Спортивная одежда</h2>
         @if (!Model.Any())
         {
             <div class="alert alert-info">По вашему запросу ничего не найдено.</div>
