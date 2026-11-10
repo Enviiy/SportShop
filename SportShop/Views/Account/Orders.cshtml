@@ -19,7 +19,8 @@ else
             <h3>@o.Title</h3>
             <p>Статус: <b>@o.Status</b></p>
             <p>Сумма: @o.Total.ToString("C")</p>
-            <ul>
+            <p>Товары:</p>
+            <ul class="list-unstyled">
                 @foreach (var i in o.Items)
                 {
                     <li>@i.Product?.Title × @i.Quantity = @((i.Price * i.Quantity).ToString("C"))</li>

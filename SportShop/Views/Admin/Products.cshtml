@@ -7,8 +7,16 @@
 <hr/>
 
 <p><a class="text-black" asp-action="ProductsEdit" asp-route-id="0">Добавить товар</a></p>
-<table>
-    <thead><tr><th>ID</th><th>Название</th><th>Цена</th><th>Акция</th><th></th></tr></thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Акция</th>
+            <th scope="col">Действия</th>
+        </tr>
+    </thead>
     <tbody>
         @foreach (var p in Model)
         {
@@ -18,11 +26,11 @@
                 <td>@p.Price.ToString("C")</td>
                 <td>@(p.IsPromo ? "Да" : "—")</td>
                 <td>
-                    <a asp-action="ProductsEdit" asp-route-id="@p.Id">Ред.</a>
+                    <a class="btn btn-primary" asp-action="ProductsEdit" asp-route-id="@p.Id">Редактировать</a>
                     <form asp-action="ProductsDelete" method="post" style="display:inline"
                             onsubmit="return confirm('Удалить товар?');">
                         <input type="hidden" name="id" value="@p.Id" />
-                        <button type="submit">Удалить</button>
+                        <button class="btn btn-danger" type="submit">Удалить</button>
                     </form>
                 </td>
             </tr>

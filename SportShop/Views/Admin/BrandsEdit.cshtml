@@ -11,18 +11,18 @@
     <input type="hidden" asp-for="DateCreated" />
 
     <div>
-        <label class="form-label" asp-for="Title"></label>
+        <label class="form-label" asp-for="Title">Название</label>
         <input class="form-control" asp-for="Title" />
         <span asp-validation-for="Title"></span>
     </div>
 
     <div>
-        <label class="form-label" asp-for="Description"></label>
+        <label class="form-label" asp-for="Description">Описание</label>
         <textarea class="form-control" asp-for="Description" rows="5"></textarea>
     </div>
 
     <div>
-        <label>Логотип (имя файла)</label>
+        <label class="form-label">Логотип</label>
         <input class="form-control" asp-for="Logo" placeholder="например, nike.png" />
         @if (!string.IsNullOrEmpty(Model.Logo))
         {

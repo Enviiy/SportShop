@@ -13,9 +13,15 @@
 }
 else
 {
-    <table>
+    <table class="table">
         <thead>
-            <tr><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Сумма</th><th></th></tr>
+            <tr>
+                <th scope="col">Товар</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Кол-во</th>
+                <th scope="col">Сумма</th>
+                <th scope="col"></th>
+            </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Items)
@@ -25,16 +31,18 @@ else
                     <td>@item.Product?.Price.ToString("C")</td>
                     <td>
                         <form asp-action="Update" method="post" style="display:inline">
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <input type="number" name="quantity" value="@item.Quantity" min="1" />
-                            <button type="submit">↻</button>
+                            <div class="input-group">
+                                 <input type="hidden" name="id" value="@item.Id" />
+                                <input class="form-control" type="number" name="quantity" value="@item.Quantity" min="1" />
+                                <button class="btn btn-primary" type="submit">Подтвердить</button>
+                            </div>                   
                         </form>
                     </td>
                     <td>@((item.Product?.Price * item.Quantity)?.ToString("C"))</td>
                     <td>
                         <form asp-action="Remove" method="post" style="display:inline">
                             <input type="hidden" name="id" value="@item.Id" />
-                            <button type="submit">Удалить</button>
+                            <button class="btn btn-danger" type="submit">Удалить</button>
                         </form>
                     </td>
                 </tr>
@@ -47,5 +55,5 @@ else
             </tr>
         </tfoot>
     </table>
-    <p><a class="button" asp-action="Checkout">Оформить заказ</a></p>
+    <p><a class="btn btn-primary" asp-action="Checkout">Оформить заказ</a></p>
 }
