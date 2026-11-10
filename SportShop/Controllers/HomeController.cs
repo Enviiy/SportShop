@@ -19,6 +19,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         var all = await _dataManager.Products.GetProductsAsync();
+        ViewBag.AllProducts = DtoHelper.ProductsToDto(all);
         ViewBag.Popular = DtoHelper.ProductsToDto(all.Take(8));
         ViewBag.Promo = DtoHelper.ProductsToDto(all.Where(p => p.IsPromo).Take(4));
         ViewBag.Reviews = (await _dataManager.Reviews.GetApprovedAsync()).Take(3);

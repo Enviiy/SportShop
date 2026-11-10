@@ -4,10 +4,9 @@
 }
 
 <h2>Оставить отзыв</h2>
-<hr/>
+<hr />
 
 <form asp-action="Create" method="post">
-    <input class="form-control" type="hidden" asp-for="ProductId" />
     <div asp-validation-summary="ModelOnly"></div>
 
     <div>
@@ -25,6 +24,7 @@
             <option value="2">2</option>
             <option value="1">1</option>
         </select>
+        <span asp-validation-for="Rating"></span>
     </div>
 
     <button class="btn btn-primary mt-3" type="submit">Отправить</button>
