@@ -20,9 +20,17 @@ public partial class AdminController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> BrandsEdit(Brand entity)
+    public async Task<IActionResult> BrandsEdit(Brand entity, IFormFile? logoFile)
     {
         if (!ModelState.IsValid) return View(entity);
+
+
+        if (logoFile != null && logoFile.Length > 0)
+        {
+            entity.Logo = logoFile.FileName;
+            await SaveImg(logoFile);
+        }
+
         await _dataManager.Brands.SaveAsync(entity);
         return RedirectToAction(nameof(Brands));
     }
