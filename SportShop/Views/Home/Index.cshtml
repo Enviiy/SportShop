@@ -24,7 +24,11 @@
                         <!-- Фото -->
                         <div class="col-md-6">
                             <img src="~/img/@(p.Photo ?? "placeholder.jpg")"
+<<<<<<< HEAD
                                  class="w-50 h-50 hero-card-img img-fluid"
+=======
+                                 class="w-100 h-100 hero-card-img"
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
                                  alt="@p.Title">
                         </div>
                         <!-- Контент -->
@@ -39,10 +43,17 @@
                                 <div class="d-flex justify-content-start gap-2">
                                     <a asp-controller="Products" asp-action="Show"
                                        asp-route-id="@p.Id"
+<<<<<<< HEAD
                                        class="btn btn-outline-warning text-black">Подробнее</a>
                                     <form asp-controller="Cart" asp-action="Add" method="post" class="m-0">
                                         <input type="hidden" name="productId" value="@p.Id" />
                                         <button type="submit" class="btn btn-warning">В корзину</button>
+=======
+                                       class="btn btn-outline-dark">Подробнее</a>
+                                    <form asp-controller="Cart" asp-action="Add" method="post" class="m-0">
+                                        <input type="hidden" name="productId" value="@p.Id" />
+                                        <button type="submit" class="btn btn-dark">В корзину</button>
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
                                     </form>
                                 </div>
                             </div>
@@ -67,7 +78,11 @@
 <div class="mb-5">
     <h2>Популярные товары</h2>
     <hr />
+<<<<<<< HEAD
     <a asp-controller="Products" asp-action="Index" class="text-decoration-none btn btn-warning mb-3">Смотреть все</a>
+=======
+    <a asp-controller="Products" asp-action="Index" class="text-decoration-none btn btn-primary mb-3">Смотреть все</a>
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
         @foreach (var p in popular)
         {
@@ -81,11 +96,19 @@
                             <p class="card-text text-black">@p.ShortDescription</p>
                             <h4 class="card-text text-black">@p.Price.ToString("C")</h4>
                         </div>
+<<<<<<< HEAD
                         <div class="card-footer bg-white border-0 d-flex justify-content-start">
                             <a asp-action="Show" asp-controller="Products" asp-route-id="@p.Id" class="btn btn-outline-warning me-3 text-black">Подробнее</a>
                             <form asp-controller="Cart" asp-action="Add" method="post">
                                 <input type="hidden" name="productId" value="@p.Id" />
                                 <button type="submit" class="btn btn-warning">В корзину</button>
+=======
+                        <div class="card-footer bg-white border-0 d-flex justify-content-start gap-2">
+                            <a asp-action="Show" asp-controller="Products" asp-route-id="@p.Id" class="btn btn-outline-dark">Подробнее</a>
+                            <form asp-controller="Cart" asp-action="Add" method="post">
+                                <input type="hidden" name="productId" value="@p.Id" />
+                                <button type="submit" class="btn btn-dark">В корзину</button>
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
                             </form>
                         </div>
                     </div>
@@ -101,7 +124,10 @@
     <div class="mb-5">
         <h2>Акции</h2>
         <hr />
+<<<<<<< HEAD
         <a asp-controller="Products" asp-action="Promo" class="btn btn-warning mb-3">Все акции</a>
+=======
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
             @foreach (var p in promo)
             {
@@ -115,11 +141,19 @@
                                 <p class="card-text text-black">@p.ShortDescription</p>
                                 <h4 class="card-text text-black">@p.Price.ToString("C")</h4>
                             </div>
+<<<<<<< HEAD
                             <div class="card-footer bg-white border-0 d-flex justify-content-start">
                                 <a asp-action="Show" asp-controller="Products" asp-route-id="@p.Id" class="btn btn-outline-warning text-black me-3">Подробнее</a>
                                 <form asp-controller="Cart" asp-action="Add" method="post">
                                     <input type="hidden" name="productId" value="@p.Id" />
                                     <button type="submit" class="btn btn-warning">В корзину</button>
+=======
+                            <div class="card-footer bg-white border-0 d-flex justify-content-start gap-2">
+                                <a asp-action="Show" asp-controller="Products" asp-route-id="@p.Id" class="btn btn-outline-dark">Подробнее</a>
+                                <form asp-controller="Cart" asp-action="Add" method="post">
+                                    <input type="hidden" name="productId" value="@p.Id" />
+                                    <button type="submit" class="btn btn-dark">В корзину</button>
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
                                 </form>
                             </div>
                         </div>
@@ -133,8 +167,12 @@
 <!-- Отзывы -->
 <div class="mb-5">
     <h2 class="mb-4">Отзывы</h2>
+<<<<<<< HEAD
     <hr />       
     <a asp-controller="Reviews" asp-action="Index" class="btn btn-warning mb-3">Все отзывы</a>
+=======
+    <hr />
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
     <div class="row g-4">
         @foreach (var r in reviews)
         {
@@ -149,4 +187,8 @@
             </div>
         }
     </div>
+<<<<<<< HEAD
+=======
+    <a asp-controller="Reviews" asp-action="Index" class="btn btn-outline-dark mt-3">Все отзывы</a>
+>>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
 </div>
