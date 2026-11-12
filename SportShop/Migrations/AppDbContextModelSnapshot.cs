@@ -52,21 +52,21 @@ namespace SportShop.Migrations
                         new
                         {
                             Id = "DA36513F-6393-43B8-A1E1-5CDF3DBEB6BF",
-                            ConcurrencyStamp = "d5d76a2e-82ac-4cd7-9752-21f0e781b79e",
+                            ConcurrencyStamp = "20ec68dd-6dd8-4b90-82e9-ef6448f5a09d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "B1111111-1111-1111-1111-111111111111",
-                            ConcurrencyStamp = "2057f093-db48-4411-9e90-cd43da0885c0",
+                            ConcurrencyStamp = "a4665ebf-4d00-4b9f-a410-ca0ac7bda141",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
                             Id = "C2222222-2222-2222-2222-222222222222",
-                            ConcurrencyStamp = "5cc7d552-a1df-47a0-b1df-c32275f2b1f2",
+                            ConcurrencyStamp = "c32e3396-b55d-49cf-adf7-4d86a60a27c6",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -166,13 +166,13 @@ namespace SportShop.Migrations
                         {
                             Id = "FA2325ED-7786-447A-BA83-93C89FE17D93",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7b8e3000-510c-413c-848e-e52b68390a00",
+                            ConcurrencyStamp = "75fb0c91-9abd-4025-aeaf-3928566fccea",
                             Email = "admin@sportshop.ru",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@SPORTSHOP.RU",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHlfdlutm5m0RUA5cKTp8puQKS6t+wEgPI1H2XG9c+aOQXPMtu/3+3OCa2rYYy2FPw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOjoLfjDpvRaLBhvAdo0dKyIOh8hLDD7tivJec2pFgaNo0BWJky+EPaJPnYhEKfqCA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -487,7 +487,7 @@ namespace SportShop.Migrations
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
@@ -610,13 +610,9 @@ namespace SportShop.Migrations
 
             modelBuilder.Entity("SportShop.Domain.Entities.Review", b =>
                 {
-                    b.HasOne("SportShop.Domain.Entities.Product", "Product")
+                    b.HasOne("SportShop.Domain.Entities.Product", null)
                         .WithMany("Reviews")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("SportShop.Domain.Entities.Brand", b =>

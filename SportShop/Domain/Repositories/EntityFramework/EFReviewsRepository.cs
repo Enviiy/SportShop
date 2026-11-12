@@ -11,20 +11,17 @@ public class EFReviewsRepository : IReviewsRepository
 
     public async Task<IEnumerable<Review>> GetAllAsync() =>
         await _ctx.Reviews.AsNoTracking()
-                          .Include(r => r.Product)
                           .OrderByDescending(r => r.DateCreated)
                           .ToListAsync();
 
     public async Task<IEnumerable<Review>> GetApprovedAsync() =>
         await _ctx.Reviews.AsNoTracking()
-                          .Include(r => r.Product)
                           .Where(r => r.IsApproved)
                           .OrderByDescending(r => r.DateCreated)
                           .ToListAsync();
 
     public async Task<IEnumerable<Review>> GetByProductAsync(int productId) =>
         await _ctx.Reviews.AsNoTracking()
-                          .Where(r => r.ProductId == productId && r.IsApproved)
                           .OrderByDescending(r => r.DateCreated)
                           .ToListAsync();
 

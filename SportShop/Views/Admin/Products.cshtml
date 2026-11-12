@@ -26,7 +26,7 @@
                 <td>@p.Price.ToString("C")</td>
                 <td>@(p.IsPromo ? "Да" : "—")</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="ProductsEdit" asp-route-id="@p.Id">Редактировать</a>
+                    <a class="btn btn-warning" asp-action="ProductsEdit" asp-route-id="@p.Id">Редактировать</a>
                     <form asp-action="ProductsDelete" method="post" style="display:inline"
                             onsubmit="return confirm('Удалить товар?');">
                         <input type="hidden" name="id" value="@p.Id" />

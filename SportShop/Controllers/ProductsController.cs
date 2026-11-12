@@ -65,7 +65,7 @@ public class ProductsController : Controller
                                                .Where(p => p.IsNew)
                                                .OrderByDescending(p => p.DateCreated)
                                                .ToListAsync();
-        return View("List", DtoHelper.ProductsToDto(items));
+        return View("New", DtoHelper.ProductsToDto(items));
     }
 
     public async Task<IActionResult> Show(int id)

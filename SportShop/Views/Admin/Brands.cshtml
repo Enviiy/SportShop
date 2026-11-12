@@ -37,7 +37,7 @@
                 <td>@b.Title</td>
                 <td>@b.Description</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="BrandsEdit" asp-route-id="@b.Id">Редактировать</a>
+                    <a class="btn btn-warning" asp-action="BrandsEdit" asp-route-id="@b.Id">Редактировать</a>
                     <form asp-action="BrandsDelete" method="post" style="display:inline"
                             onsubmit="return confirm('Удалить бренд?');">
                         <input type="hidden" name="id" value="@b.Id" />
