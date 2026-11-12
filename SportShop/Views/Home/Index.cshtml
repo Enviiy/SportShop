@@ -63,6 +63,22 @@
     </button>
 </div>
 
+<!-- О нас -->
+<h2>О нас</h2>
+<hr />
+<p>
+    Мы- команда энтузиастов спорта, создающая магазин, в котором каждый найдёт
+    одежду для тренировок, соревнований и активного отдыха. Наша миссия-
+    сделать качественную экипировку доступной.
+</p>
+<h5>Наши преимущества:</h5>
+<ul>
+    <li>Только оригинальные бренды</li>
+    <li>Быстрая доставка по всей России</li>
+    <li>Гарантия возврата в течение 14 дней</li>
+    <li>Скидки постоянным клиентам</li>
+</ul>
+
 <!-- Популярные товары -->
 <div class="mb-5">
     <h2>Популярные товары</h2>
@@ -150,3 +166,20 @@
         }
     </div>
 </div>
+
+<!-- Контактная информация -->
+<h2>Контактная информация</h2>
+<hr>
+
+<p>Телефон: <a href="tel:@appConfig?.company.CompanyPhoneShort" class="text-black">@appConfig?.company.CompanyPhone</a></p>
+<p>Email: <a href="mailto:@appConfig?.company.CompanyEmail" class="text-black">@appConfig?.company.CompanyEmail</a></p>
+
+<h2>Форма обратной связи</h2>
+<hr>
+
+<form method="post" asp-controller="Home" asp-action="Feedback">
+    <div><label>Имя</label><input class="form-control" name="name" required /></div>
+    <div><label>Email</label><input class="form-control" type="email" name="email" required /></div>
+    <div><label>Сообщение</label><textarea class="form-control" name="message" required></textarea></div>
+    <button class="btn btn-warning mt-3" type="submit">Отправить</button>
+</form>
