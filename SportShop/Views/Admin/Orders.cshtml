@@ -3,34 +3,38 @@
     ViewBag.Title = "Заказы";
     var statuses = Html.GetEnumSelectList<SportShop.Domain.Enums.OrderStatusEnum>();
 }
-<div class="box">
-    <h2>Заказы</h2>
-    @foreach (var o in Model)
-    {
-        <article>
-            <h3>#@o.Id — @o.Title</h3>
-            <p>Клиент: @o.CustomerName, @o.Phone</p>
-            <p>Адрес: @o.Address</p>
-            <p>Сумма: @o.Total.ToString("C")</p>
-            <p>
-                Статус:
-                <form asp-action="UpdateOrderStatus" method="post" style="display:inline">
+
+<h2>Заказы</h2>
+<hr/>
+
+@foreach (var o in Model)
+{
+    <article>
+        <h3>#@o.Id @o.Title</h3>
+        <p>Клиент: @o.CustomerName, @o.Phone</p>
+        <p>Адрес: @o.Address</p>
+        <p>Сумма: @o.Total.ToString("C")</p>
+        <p>
+            Статус:
+            <form asp-action="UpdateOrderStatus" method="post" style="display:inline">
+                <div class="input-group">
                     <input type="hidden" name="id" value="@o.Id" />
-                    <select name="status">
+                    <select class="form-select" name="status">
                         @foreach (var s in statuses)
                         {
                             <option value="@s.Value" selected="@(o.Status.ToString() == s.Text)">@s.Text</option>
                         }
                     </select>
-                    <button type="submit">Изменить</button>
-                </form>
-            </p>
-            <ul>
-                @foreach (var i in o.Items)
-                {
-                    <li>@i.Product?.Title × @i.Quantity = @((i.Price * i.Quantity).ToString("C"))</li>
-                }
-            </ul>
-        </article>
-    }
-</div>
+                    <button class="btn btn-warning" type="submit">Изменить</button>
+                </div>
+            </form>
+        </p>
+        <p>Товары:</p>
+        <ul class="list-unstyled">
+            @foreach (var i in o.Items)
+            {
+                <li>@i.Product?.Title × @i.Quantity = @((i.Price * i.Quantity).ToString("C"))</li>
+            }
+        </ul>
+    </article>
+}

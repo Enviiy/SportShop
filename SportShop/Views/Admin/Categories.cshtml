@@ -2,37 +2,42 @@
 @{
     ViewBag.Title = "Категории";
 }
-<div class="box">
-    <h2>Категории</h2>
 
-    @if (TempData["Error"] != null)
-    {
-        <p style="color:#c00">@TempData["Error"]</p>
-    }
+<h2>Категории</h2>
+<hr/>
 
-    <p><a asp-action="CategoriesEdit" asp-route-id="0">+ Добавить категорию</a></p>
+@if (TempData["Error"] != null)
+{
+    <p style="color:#c00">@TempData["Error"]</p>
+}
 
-    <table>
-        <thead>
-            <tr><th>ID</th><th>Название</th><th>Дата создания</th><th></th></tr>
-        </thead>
-        <tbody>
-            @foreach (var c in Model)
-            {
-                <tr>
-                    <td>@c.Id</td>
-                    <td>@c.Title</td>
-                    <td>@c.DateCreated.ToString("dd.MM.yyyy")</td>
-                    <td>
-                        <a asp-action="CategoriesEdit" asp-route-id="@c.Id">Ред.</a>
-                        <form asp-action="CategoriesDelete" method="post" style="display:inline"
-                              onsubmit="return confirm('Удалить категорию?');">
-                            <input type="hidden" name="id" value="@c.Id" />
-                            <button type="submit">Удалить</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+<p><a class="text-black" asp-action="CategoriesEdit" asp-route-id="0">Добавить категорию</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название</th>
+            <th scope="col"> Дата создания</th>
+            <th scope="col">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Title</td>
+                <td>@c.DateCreated.ToString("dd.MM.yyyy")</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="CategoriesEdit" asp-route-id="@c.Id">Редактировать</a>
+                    <form asp-action="CategoriesDelete" method="post" style="display:inline"
+                            onsubmit="return confirm('Удалить категорию?');">
+                        <input type="hidden" name="id" value="@c.Id" />
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

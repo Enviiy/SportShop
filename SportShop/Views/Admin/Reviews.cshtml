@@ -1,35 +1,44 @@
 ﻿@model IEnumerable<SportShop.Domain.Entities.Review>
 @{ ViewBag.Title = "Модерация отзывов"; }
-<div class="box">
-    <h2>Отзывы</h2>
-    <table>
-        <thead><tr><th>ID</th><th>Товар</th><th>Автор</th><th>Текст</th><th>Рейтинг</th><th>Статус</th><th></th></tr></thead>
-        <tbody>
-            @foreach (var r in Model)
-            {
-                <tr>
-                    <td>@r.Id</td>
-                    <td>@r.Product?.Title</td>
-                    <td>@r.AuthorName</td>
-                    <td>@r.Text</td>
-                    <td>@r.Rating</td>
-                    <td>@(r.IsApproved ? "Одобрен" : "На модерации")</td>
-                    <td>
-                        @if (!r.IsApproved)
-                        {
-                            <form asp-action="ApproveReview" method="post" style="display:inline">
-                                <input type="hidden" name="id" value="@r.Id" />
-                                <button type="submit">Одобрить</button>
-                            </form>
-                        }
-                        <form asp-action="DeleteReview" method="post" style="display:inline"
-                              onsubmit="return confirm('Удалить отзыв?');">
+
+<h2>Отзывы</h2>
+<hr/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Текст</th>
+            <th scope="col">Рейтинг</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Id</td>
+                <td>@r.AuthorName</td>
+                <td>@r.Text</td>
+                <td>@r.Rating</td>
+                <td>@(r.IsApproved ? "Одобрен" : "На модерации")</td>
+                <td>
+                    @if (!r.IsApproved)
+                    {
+                        <form asp-action="ApproveReview" method="post" style="display:inline">
                             <input type="hidden" name="id" value="@r.Id" />
-                            <button type="submit">Удалить</button>
+                            <button class="btn btn-primary" type="submit">Одобрить</button>
                         </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                    }
+                    <form asp-action="DeleteReview" method="post" style="display:inline"
+                            onsubmit="return confirm('Удалить отзыв?');">
+                        <input type="hidden" name="id" value="@r.Id" />
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -2,13 +2,26 @@
 @{
     ViewBag.Title = "Оформление заказа";
 }
-<div class="box">
-    <h2>Оформление заказа</h2>
-    <form asp-action="Checkout" method="post">
-        <div asp-validation-summary="ModelOnly"></div>
-        <div><label asp-for="Name"></label><input asp-for="Name" /><span asp-validation-for="Name"></span></div>
-        <div><label asp-for="Phone"></label><input asp-for="Phone" /><span asp-validation-for="Phone"></span></div>
-        <div><label asp-for="Address"></label><input asp-for="Address" /><span asp-validation-for="Address"></span></div>
-        <button type="submit">Подтвердить заказ</button>
-    </form>
-</div>
+
+<h2>Оформление заказа</h2>
+<hr />
+
+<form asp-action="Checkout" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label class="form-label" asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label class="form-label" asp-for="Phone"></label>
+        <input class="form-control" asp-for="Phone" />
+        <span asp-validation-for="Phone"></span>
+    </div>
+    <div>
+        <label class="form-label" asp-for="Address"></label>
+        <input class="form-control" asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+    </div>
+    <button class="btn btn-warning mt-3" type="submit">Подтвердить заказ</button>
+</form>

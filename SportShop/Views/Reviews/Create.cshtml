@@ -2,29 +2,30 @@
 @{
     ViewBag.Title = "Оставить отзыв";
 }
-<div class="box">
-    <h2>Оставить отзыв</h2>
-    <form asp-action="Create" method="post">
-        <input type="hidden" asp-for="ProductId" />
-        <div asp-validation-summary="ModelOnly"></div>
 
-        <div>
-            <label asp-for="Text"></label>
-            <textarea asp-for="Text" rows="5"></textarea>
-            <span asp-validation-for="Text"></span>
-        </div>
+<h2>Оставить отзыв</h2>
+<hr />
 
-        <div>
-            <label asp-for="Rating"></label>
-            <select asp-for="Rating">
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1</option>
-            </select>
-        </div>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
 
-        <button type="submit">Отправить</button>
-    </form>
-</div>
+    <div>
+        <label class="form-label" asp-for="Text"></label>
+        <textarea class="form-control" asp-for="Text" rows="5"></textarea>
+        <span asp-validation-for="Text"></span>
+    </div>
+
+    <div>
+        <label class="form-label" asp-for="Rating"></label>
+        <select class="form-select" asp-for="Rating">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+        <span asp-validation-for="Rating"></span>
+    </div>
+
+    <button class="btn btn-warning mt-3" type="submit">Отправить</button>
+</form>

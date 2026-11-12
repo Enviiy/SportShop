@@ -2,19 +2,20 @@
 @{
     ViewBag.Title = Model.Id == 0 ? "Добавить категорию" : "Редактировать категорию";
 }
-<div class="box">
-    <h2>@ViewBag.Title</h2>
-    <form asp-action="CategoriesEdit" method="post">
-        <input type="hidden" asp-for="Id" />
-        <input type="hidden" asp-for="DateCreated" />
 
-        <div>
-            <label asp-for="Title"></label>
-            <input asp-for="Title" />
-            <span asp-validation-for="Title"></span>
-        </div>
+<h2>@ViewBag.Title</h2>
+<hr/>
 
-        <button type="submit">Сохранить</button>
-        <a asp-action="Categories">Отмена</a>
-    </form>
-</div>
+<form asp-action="CategoriesEdit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="DateCreated" />
+
+    <div>
+        <label class="form-label" asp-for="Title"></label>
+        <input class="form-control" asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <button class="btn btn-warning mt-3 mb-3" type="submit">Сохранить</button>
+    <a class="btn btn-danger" asp-action="Categories">Отмена</a>
+</form>

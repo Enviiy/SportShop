@@ -2,33 +2,34 @@
 @{
     ViewBag.Title = Model.Id == 0 ? "Добавить бренд" : "Редактировать бренд";
 }
-<div class="box">
-    <h2>@ViewBag.Title</h2>
-    <form asp-action="BrandsEdit" method="post" enctype="multipart/form-data">
-        <input type="hidden" asp-for="Id" />
-        <input type="hidden" asp-for="DateCreated" />
 
-        <div>
-            <label asp-for="Title"></label>
-            <input asp-for="Title" />
-            <span asp-validation-for="Title"></span>
-        </div>
+<h2>@ViewBag.Title</h2>
+<hr/>
 
-        <div>
-            <label asp-for="Description"></label>
-            <textarea asp-for="Description" rows="5"></textarea>
-        </div>
+<form asp-action="BrandsEdit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="DateCreated" />
 
-        <div>
-            <label>Логотип (имя файла)</label>
-            <input asp-for="Logo" placeholder="например, nike.png" />
-            @if (!string.IsNullOrEmpty(Model.Logo))
-            {
-                <img src="~/img/@Model.Logo" style="display:block;margin:10px auto;max-height:80px" />
-            }
-        </div>
+    <div>
+        <label class="form-label" asp-for="Title">Название</label>
+        <input class="form-control" asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
 
-        <button type="submit">Сохранить</button>
-        <a asp-action="Brands">Отмена</a>
-    </form>
-</div>
+    <div>
+        <label class="form-label" asp-for="Description">Описание</label>
+        <textarea class="form-control" asp-for="Description" rows="5"></textarea>
+    </div>
+
+    <div>
+        <label class="form-label">Логотип</label>
+        <input class="form-control" asp-for="Logo" placeholder="например, nike.png" />
+        @if (!string.IsNullOrEmpty(Model.Logo))
+        {
+            <img src="~/img/@Model.Logo" style="display:block;margin:10px auto;max-height:80px" />
+        }
+    </div>
+
+    <button class="btn btn-warning" type="submit">Сохранить</button>
+    <a class="btn btn-danger mt-3 mb-3" asp-action="Brands">Отмена</a>
+</form>

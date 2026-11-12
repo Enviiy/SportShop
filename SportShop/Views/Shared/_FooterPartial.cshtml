@@ -6,22 +6,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-3">
-                <h5 class="text-uppercase fw-bold text-warning">@appConfig?.company.CompanyName</h5>
-                <p class="text-muted small">Спортивная одежда для побед каждый день. Качественные бренды, быстрая доставка.</p>
+                <img src="\img\logo.png" width="50"/>
+                <h5>@appConfig?.company.CompanyName</h5>
             </div>
             <div class="col-md-4 mb-3">
                 <h5>Разделы</h5>
                 <ul class="list-unstyled">
-                    <li><a asp-controller="Home" asp-action="About" class="text-decoration-none text-light">О нас</a></li>
-                    <li><a asp-controller="Products" asp-action="Index" class="text-decoration-none text-light">Каталог</a></li>
+                    <li><a asp-controller="Products" asp-action="Index" class="text-decoration-none text-light">Каталог</a></li>                                        <li><a asp-controller="Home" asp-action="About" class="text-decoration-none text-light">О нас</a></li>
+                    <li><a asp-controller="Products" asp-action="Promo" class="text-decoration-none text-light">Акции</a></li>
+                    <li><a asp-controller="Products" asp-action="New" class="text-decoration-none text-light">Новинки</a></li>
+                    <li><a asp-controller="Brands" asp-action="Index" class="text-decoration-none text-light">Бренды</a></li>
+                    <li><a asp-controller="Reviews" asp-action="Index" class="text-decoration-none text-light">Акции</a></li>
                     <li><a asp-controller="Home" asp-action="Contacts" class="text-decoration-none text-light">Контакты</a></li>
                 </ul>
             </div>
             <div class="col-md-4 mb-3">
                 <h5>Контакты</h5>
-                <p class="mb-1"><i class="bi bi-telephone"></i> @appConfig?.company.CompanyPhone</p>
-                <p class="mb-1"><i class="bi bi-envelope"></i> @appConfig?.company.CompanyEmail</p>
-                <p class="small text-muted mt-3">&copy; @DateTime.Now.Year — Все права защищены.</p>
+                <p class="mb-1">Телефон: @appConfig?.company.CompanyPhone</p>
+                <p class="mb-1">Email: @appConfig?.company.CompanyEmail</p>
             </div>
         </div>
     </div>

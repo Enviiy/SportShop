@@ -4,54 +4,55 @@
     var categories = (IEnumerable<SportShop.Domain.Entities.Category>)ViewBag.Categories;
     var brands = (IEnumerable<SportShop.Domain.Entities.Brand>)ViewBag.Brands;
 }
-<div class="box">
-    <h2>@ViewBag.Title</h2>
-    <form asp-action="ProductsEdit" method="post" enctype="multipart/form-data">
-        <input type="hidden" asp-for="Id" />
-        <input type="hidden" asp-for="DateCreated" />
 
-        <div><label asp-for="Title"></label><input asp-for="Title" /><span asp-validation-for="Title"></span></div>
+<h2>@ViewBag.Title</h2>
+<hr/>
 
-        <div>
-            <label asp-for="CategoryId"></label>
-            <select asp-for="CategoryId">
-                <option value="">—</option>
-                @foreach (var c in categories)
-                { <option value="@c.Id">@c.Title</option> }
-            </select>
-        </div>
+<form asp-action="ProductsEdit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="DateCreated" />
 
-        <div>
-            <label asp-for="BrandId"></label>
-            <select asp-for="BrandId">
-                <option value="">—</option>
-                @foreach (var b in brands)
-                { <option value="@b.Id">@b.Title</option> }
-            </select>
-        </div>
+    <div><label class="form-label" asp-for="Title"></label><input class="form-control" asp-for="Title" /><span asp-validation-for="Title"></span></div>
 
-        <div><label asp-for="Price"></label><input asp-for="Price" type="number" step="0.01" /></div>
-        <div><label asp-for="OldPrice"></label><input asp-for="OldPrice" type="number" step="0.01" /></div>
-        <div><label asp-for="Size"></label><input asp-for="Size" /></div>
-        <div><label asp-for="ShortDescription"></label><textarea asp-for="ShortDescription"></textarea></div>
-        <div><label asp-for="Description"></label><textarea asp-for="Description" rows="10"></textarea></div>
+    <div>
+        <label asp-for="CategoryId"></label>
+        <select class="form-select" asp-for="CategoryId">
+            <option value="">—</option>
+            @foreach (var c in categories)
+            { <option value="@c.Id">@c.Title</option> }
+        </select>
+    </div>
 
-        <div>
-            <label asp-for="Type"></label>
-            <select asp-for="Type" asp-items="Html.GetEnumSelectList<SportShop.Domain.Enums.ProductTypeEnum>()"></select>
-        </div>
+    <div>
+        <label asp-for="BrandId"></label>
+        <select class="form-select" asp-for="BrandId">
+            <option value="">—</option>
+            @foreach (var b in brands)
+            { <option value="@b.Id">@b.Title</option> }
+        </select>
+    </div>
 
-        <div><label>Фото</label><input type="file" name="imageFile" /></div>
-        @if (!string.IsNullOrEmpty(Model.Photo))
-        {
-            <img src="~/img/@Model.Photo" style="display:block;margin:0 auto;max-width:100%;" />
-        }
+    <div><label class="form-label" asp-for="Price"></label><input class="form-control" asp-for="Price" type="number" step="0.01" /></div>
+    <div><label class="form-label" asp-for="OldPrice"></label><input class="form-control" asp-for="OldPrice" type="number" step="0.01" /></div>
+    <div><label class="form-label" asp-for="Size"></label><input class="form-control" asp-for="Size" /></div>
+    <div><label class="form-label" asp-for="ShortDescription"></label><textarea class="form-control" asp-for="ShortDescription"></textarea></div>
+    <div><label class="form-label" asp-for="Description"></label><textarea class="form-control" asp-for="Description" rows="10"></textarea></div>
 
-        <div><label><input asp-for="IsPromo" /> Акция</label></div>
-        <div><label><input asp-for="IsNew" /> Новинка</label></div>
-        <div><label><input asp-for="InStock" /> В наличии</label></div>
+    <div>
+        <label class="form-label" asp-for="Type"></label>
+        <select class="form-select" asp-for="Type" asp-items="Html.GetEnumSelectList<SportShop.Domain.Enums.ProductTypeEnum>()"></select>
+    </div>
 
-        <button type="submit">Сохранить</button>
-        <a asp-action="Products">Отмена</a>
-    </form>
-</div>
+    <div><label class="form-label">Фото</label><input class="form-control" type="file" name="imageFile" /></div>
+    @if (!string.IsNullOrEmpty(Model.Photo))
+    {
+        <img src="~/img/@Model.Photo" style="display:block;margin:0 auto;max-width:100%;" />
+    }
+
+    <div class="form-check"><label class="form-check-label"><input class="form-check-input" asp-for="IsPromo" /> Акция</label></div>
+    <div class="form-check"><label class="form-check-label"><input class="form-check-input" asp-for="IsNew" /> Новинка</label></div>
+    <div class="form-check"><label class="form-check-label"><input class="form-check-input" asp-for="InStock" /> В наличии</label></div>
+
+    <button class="btn btn-warning" type="submit">Сохранить</button>
+    <a class="btn btn-danger" asp-action="Products">Отмена</a>
+</form>

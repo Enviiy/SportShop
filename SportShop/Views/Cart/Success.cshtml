@@ -1,8 +1,10 @@
 ﻿@{
     ViewBag.Title = "Заказ оформлен";
 }
-<div class="box">
-    <h2>Спасибо за заказ!</h2>
-    <p>Номер вашего заказа: <b>#@ViewBag.OrderId</b></p>
-    <p><a asp-controller="Account" asp-action="Orders">Мои заказы</a> · <a asp-controller="Products" asp-action="Index">Продолжить покупки</a></p>
-</div>
+
+<h2>Спасибо за заказ!</h2>
+<hr />
+
+<p>Номер вашего заказа: <b>#@ViewBag.OrderId</b></p>
+<a class="text-black" asp-controller="Account" asp-action="Orders">Мои заказы</a>
+<a class="text-black" asp-controller="Products" asp-action="Index">Продолжить покупки</a>

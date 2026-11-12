@@ -5,8 +5,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
         <!-- Логотип -->
-        <a class="navbar-brand fw-bold text-uppercase" asp-controller="Home" asp-action="Index">
-            <i class="bi bi-lightning-charge-fill text-warning"></i>
+        <img src="\img\logo.png" width="50" />
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
             @appConfig?.company.CompanyName
         </a>
         
@@ -18,9 +18,9 @@
         <!-- Ссылки -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="About">О нас</a></li>
                 <li class="nav-item"><a class="nav-link" asp-controller="Products" asp-action="Index">Каталог</a></li>
-                <li class="nav-item"><a class="nav-link text-warning fw-bold" asp-controller="Products" asp-action="Promo">Акции</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Products" asp-action="Promo">Акции</a></li>
                 <li class="nav-item"><a class="nav-link" asp-controller="Products" asp-action="New">Новинки</a></li>
                 <li class="nav-item"><a class="nav-link" asp-controller="Brands" asp-action="Index">Бренды</a></li>
                 <li class="nav-item"><a class="nav-link" asp-controller="Reviews" asp-action="Index">Отзывы</a></li>
@@ -29,26 +29,22 @@
             
             <ul class="navbar-nav">
                 <!-- Корзина -->
-                <li class="nav-item">
-                    <a class="nav-link position-relative" asp-controller="Cart" asp-action="Index">
-                        <i class="bi bi-cart3 fs-5"></i>
-                        <span class="d-none d-lg-inline ms-1">Корзина</span>
-                    </a>
-                </li>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <li class="nav-item"><a class="nav-link" asp-controller="Cart" asp-action="Index">Корзина</a></li>
+                }
                 <!-- Личный кабинет -->
                 @if (User.Identity?.IsAuthenticated == true)
                 {
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle fs-5"></i> @User.Identity.Name
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">@User.Identity.Name</a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">Профиль</a></li>
                             <li><a class="dropdown-item" asp-controller="Account" asp-action="Orders">Мои заказы</a></li>
                             @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                             {
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-primary fw-bold" asp-controller="Admin" asp-action="Index">Админ-панель</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Index">Админ-панель</a></li>
                             }
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -61,8 +57,8 @@
                 }
                 else
                 {
-                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login">Вход</a></li>
-                    <li class="nav-item"><a class="btn btn-outline-light ms-2" asp-controller="Account" asp-action="Register">Регистрация</a></li>
+                    <li class="nav-item"><a class="btn btn-warning me-2" asp-controller="Account" asp-action="Login">Вход</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-warning " asp-controller="Account" asp-action="Register">Регистрация</a></li>
                 }
             </ul>
         </div>
