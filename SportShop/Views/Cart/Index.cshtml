@@ -34,7 +34,7 @@ else
                             <div class="input-group">
                                  <input type="hidden" name="id" value="@item.Id" />
                                 <input class="form-control" type="number" name="quantity" value="@item.Quantity" min="1" />
-                                <button class="btn btn-warning" type="submit">Подтвердить</button>
+                                <button class="btn btn-primary" type="submit">Подтвердить</button>
                             </div>                   
                         </form>
                     </td>
@@ -55,5 +55,5 @@ else
             </tr>
         </tfoot>
     </table>
-    <p><a class="btn btn-success" asp-action="Checkout">Оформить заказ</a></p>
+    <p><a class="btn btn-primary" asp-action="Checkout">Оформить заказ</a></p>
 }

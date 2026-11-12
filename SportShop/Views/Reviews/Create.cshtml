@@ -4,9 +4,10 @@
 }
 
 <h2>Оставить отзыв</h2>
-<hr />
+<hr/>
 
 <form asp-action="Create" method="post">
+    <input class="form-control" type="hidden" asp-for="ProductId" />
     <div asp-validation-summary="ModelOnly"></div>
 
     <div>
@@ -24,12 +25,16 @@
             <option value="2">2</option>
             <option value="1">1</option>
         </select>
-        <span asp-validation-for="Rating"></span>
     </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     <button class="btn btn-warning mt-3" type="submit">Отправить</button>
 =======
     <button class="btn btn-primary mt-3" type="submit">Отправить</button>
 >>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
 </form>
+=======
+    <button class="btn btn-primary mt-3" type="submit">Отправить</button>
+</form>
+>>>>>>> parent of 6ed787a (Новые кнопки)

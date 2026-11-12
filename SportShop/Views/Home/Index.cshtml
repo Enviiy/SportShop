@@ -5,10 +5,10 @@
     var popular = (IEnumerable<SportShop.Models.ProductDto>)ViewBag.Popular;
     var promo   = (IEnumerable<SportShop.Models.ProductDto>)ViewBag.Promo;
     var reviews = (IEnumerable<SportShop.Domain.Entities.Review>)ViewBag.Reviews;
-    var allProducts = (IEnumerable<SportShop.Models.ProductDto>)ViewBag.AllProducts;
 }
 
 <!-- Баннер -->
+<<<<<<< HEAD
 <h2>SportShop</h2>
 <hr />
 <div id="carouselExampleDark" class="carousel carousel-dark slide mb-4" data-bs-ride="carousel">
@@ -63,19 +63,19 @@
             </div>
             first = false;
         }
+=======
+<div class="p-5 mb-4 bg-dark text-white rounded-3 shadow" style="background: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200') no-repeat center center; background-size: cover;">
+    <div class="container-fluid py-5" style="background: rgba(0,0,0,0.6); border-radius: 10px;">
+        <h1 class="display-4 fw-bold">@appConfig?.company.CompanyName</h1>
+        <p class="col-md-8 fs-4">Экипировка для тех, кто не останавливается на достигнутом.</p>
+        <a class="btn btn-warning btn-lg fw-bold" asp-controller="Products" asp-action="Index">Перейти в каталог</a>
+>>>>>>> parent of 6ed787a (Новые кнопки)
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
 </div>
 
 <!-- Популярные товары -->
 <div class="mb-5">
+<<<<<<< HEAD
     <h2>Популярные товары</h2>
     <hr />
 <<<<<<< HEAD
@@ -111,8 +111,30 @@
 >>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
                             </form>
                         </div>
+=======
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">Популярные товары</h2>
+        <a asp-controller="Products" asp-action="Index" class="text-decoration-none">Смотреть все</a>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        @foreach (var p in popular)
+        {
+            <div class="col">
+                <div class="card h-100 product-card shadow-sm border-0">
+                    <img src="~/img/@(p.Photo ?? "placeholder.jpg")" class="card-img-top" alt="@p.Title" style="object-fit:cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">@p.Title</h5>
+                        <p class="text-muted small mb-2">@p.BrandName</p>
+                        <h4 class="text-danger fw-bold mt-auto">@p.Price.ToString("C")</h4>
+>>>>>>> parent of 6ed787a (Новые кнопки)
                     </div>
-                </a>
+                    <div class="card-footer bg-white border-0 pb-3">
+                        <form asp-controller="Cart" asp-action="Add" method="post">
+                            <input type="hidden" name="productId" value="@p.Id" />
+                            <button type="submit" class="btn btn-dark w-100"><i class="bi bi-cart-plus"></i> В корзину</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         }
     </div>
@@ -121,6 +143,7 @@
 <!-- Акции -->
 @if (promo.Any())
 {
+<<<<<<< HEAD
     <div class="mb-5">
         <h2>Акции</h2>
         <hr />
@@ -156,8 +179,23 @@
 >>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
                                 </form>
                             </div>
+=======
+    <div class="bg-warning bg-opacity-10 p-4 rounded-3 mb-5 border border-warning">
+        <h2 class="fw-bold text-warning mb-4"><i class="bi bi-tags-fill"></i> Горячие акции</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            @foreach (var p in promo)
+            {
+                <div class="col">
+                    <div class="card h-100 product-card shadow-sm border-0">
+                        <div class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 m-2 rounded small">SALE</div>
+                        <img src="~/img/@(p.Photo ?? "placeholder.jpg")" class="card-img-top" alt="@p.Title">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@p.Title</h5>
+                            <p><s class="text-muted">@p.OldPrice?.ToString("C")</s> <b class="text-danger fs-5">@p.Price.ToString("C")</b></p>
+                            <a asp-controller="Products" asp-action="Show" asp-route-id="@p.Id" class="btn btn-outline-dark w-100">Подробнее</a>
+>>>>>>> parent of 6ed787a (Новые кнопки)
                         </div>
-                    </a>
+                    </div>
                 </div>
             }
         </div>
@@ -166,6 +204,7 @@
 
 <!-- Отзывы -->
 <div class="mb-5">
+<<<<<<< HEAD
     <h2 class="mb-4">Отзывы</h2>
 <<<<<<< HEAD
     <hr />       
@@ -173,6 +212,9 @@
 =======
     <hr />
 >>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
+=======
+    <h2 class="fw-bold mb-4">Отзывы клиентов</h2>
+>>>>>>> parent of 6ed787a (Новые кнопки)
     <div class="row g-4">
         @foreach (var r in reviews)
         {
@@ -181,14 +223,20 @@
                     <div class="text-warning mb-2">
                         @for (int i = 0; i < r.Rating; i++) { <i class="bi bi-star-fill"></i> }
                     </div>
-                    <p>"@r.Text"</p>
-                    <b>@r.AuthorName</b>
+                    <p class="fst-italic">"@r.Text"</p>
+                    <p class="fw-bold mb-0">— @r.AuthorName</p>
                 </div>
             </div>
         }
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <a asp-controller="Reviews" asp-action="Index" class="btn btn-outline-dark mt-3">Все отзывы</a>
 >>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
+=======
+    <div class="text-center mt-4">
+        <a asp-controller="Reviews" asp-action="Index" class="btn btn-outline-dark">Все отзывы</a>
+    </div>
+>>>>>>> parent of 6ed787a (Новые кнопки)
 </div>

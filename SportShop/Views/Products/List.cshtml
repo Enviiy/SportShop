@@ -6,6 +6,7 @@
 <h2>Акции</h2>
 <hr>
 
+<<<<<<< HEAD
 <div class="col-lg-9">
     @if (!Model.Any())
     {
@@ -47,8 +48,19 @@
                             </div>
                         </div>
                     </a>
+=======
+<div class="box">
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="col-3 col-6-medium">
+                <div class="product-card">
+                    <img src="~/img/@(p.Photo ?? "placeholder.jpg")" />
+                    <h3><a asp-action="Show" asp-route-id="@p.Id">@p.Title</a></h3>
+                    <p>@p.Price.ToString("C")</p>
+>>>>>>> parent of 6ed787a (Новые кнопки)
                 </div>
-            }
-        </div>
-    }
+            </div>
+        }
+    </div>
 </div>

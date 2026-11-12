@@ -6,6 +6,7 @@
 <h2>Отзывы</h2>
 <hr>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <a asp-action="Create" class="btn btn-warning">Оставить отзыв</a>
 
@@ -33,7 +34,30 @@
         }
     </div>
     @if (!Model.Any())
+=======
+<a asp-action="Create" class="btn btn-primary">Оставить отзыв</a>
+
+<div class="box">
+    @if (TempData["Success"] != null)
+>>>>>>> parent of 6ed787a (Новые кнопки)
     {
-        <p class="text-muted">Пока нет одобренных отзывов.</p>
+        <p style="color:green">@TempData["Success"]</p>
+    }
+
+    @foreach (var r in Model)
+    {
+        <blockquote>
+            <p>@r.Text</p>
+            <footer>
+                @r.AuthorName — @r.Rating/5
+                @if (r.Product != null)
+                {
+                    <span>
+                        · <a asp-controller="Products" asp-action="Show"
+                             asp-route-id="@r.ProductId">@r.Product.Title</a>
+                    </span>
+                }
+            </footer>
+        </blockquote>
     }
 </div>

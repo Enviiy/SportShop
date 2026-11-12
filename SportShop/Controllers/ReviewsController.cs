@@ -11,7 +11,6 @@ public class ReviewsController : Controller
 {
     private readonly DataManager _dm;
     private readonly UserManager<IdentityUser> _um;
-
     public ReviewsController(DataManager dm, UserManager<IdentityUser> um)
     {
         _dm = dm; _um = um;
@@ -22,8 +21,8 @@ public class ReviewsController : Controller
 
     [Authorize]
     [HttpGet]
-    public IActionResult Create()
-        => View(new ReviewViewModel());
+    public IActionResult Create(int productId)
+        => View(new ReviewViewModel { ProductId = productId });
 
     [Authorize]
     [HttpPost]
@@ -33,11 +32,18 @@ public class ReviewsController : Controller
         if (!ModelState.IsValid) return View(model);
 
         var userId = _um.GetUserId(User)!;
+        if (!await _dm.Orders.HasUserBoughtProductAsync(userId, model.ProductId))
+        {
+            ModelState.AddModelError(string.Empty,
+                "Оставлять отзывы можно только после покупки этого товара.");
+            return View(model);
+        }
 
         await _dm.Reviews.AddAsync(new Review
         {
             UserId = userId,
             AuthorName = User.Identity?.Name,
+            ProductId = model.ProductId,
             Text = model.Text,
             Rating = model.Rating,
             IsApproved = false

@@ -6,12 +6,17 @@
 <h2>Бренды</h2>
 <hr>
 
+<<<<<<< HEAD
 <div class="col-lg-9">
 <<<<<<< HEAD
     @if (!Model.Any())
+<div class="box">
+    @foreach (var b in Model)
+>>>>>>> parent of 6ed787a (Новые кнопки)
     {
-        <div class="alert alert-info">По вашему запросу ничего не найдено.</div>
+        <h3><a asp-action="Show" asp-route-id="@b.Id">@b.Title</a></h3>
     }
+<<<<<<< HEAD
     else
     {
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
@@ -53,4 +58,6 @@
         }
     </div>
 >>>>>>> 2c1c8a9001e0a5d409279a36f6a42ede81df1a1b
+=======
+>>>>>>> parent of 6ed787a (Новые кнопки)
 </div>

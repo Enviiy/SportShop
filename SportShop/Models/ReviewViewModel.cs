@@ -4,6 +4,8 @@ namespace SportShop.Models;
 
 public class ReviewViewModel
 {
+    public int ProductId { get; set; }
+
     [Required(ErrorMessage = "Напишите отзыв")]
     [MinLength(10, ErrorMessage = "Отзыв должен быть не короче 10 символов")]
     [Display(Name = "Текст отзыва")]

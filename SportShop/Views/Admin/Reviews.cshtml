@@ -8,6 +8,7 @@
     <thead>
         <tr>
             <th scope="col">ID</th>
+            <th scope="col">Товар</th>
             <th scope="col">Автор</th>
             <th scope="col">Текст</th>
             <th scope="col">Рейтинг</th>
@@ -20,6 +21,7 @@
         {
             <tr>
                 <td>@r.Id</td>
+                <td>@r.Product?.Title</td>
                 <td>@r.AuthorName</td>
                 <td>@r.Text</td>
                 <td>@r.Rating</td>
@@ -29,13 +31,13 @@
                     {
                         <form asp-action="ApproveReview" method="post" style="display:inline">
                             <input type="hidden" name="id" value="@r.Id" />
-                            <button class="btn btn-primary" type="submit">Одобрить</button>
+                            <button type="submit">Одобрить</button>
                         </form>
                     }
                     <form asp-action="DeleteReview" method="post" style="display:inline"
                             onsubmit="return confirm('Удалить отзыв?');">
                         <input type="hidden" name="id" value="@r.Id" />
-                        <button class="btn btn-danger" type="submit">Удалить</button>
+                        <button type="submit">Удалить</button>
                     </form>
                 </td>
             </tr>

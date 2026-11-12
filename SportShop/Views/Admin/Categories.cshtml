@@ -30,7 +30,7 @@
                 <td>@c.Title</td>
                 <td>@c.DateCreated.ToString("dd.MM.yyyy")</td>
                 <td>
-                    <a class="btn btn-warning" asp-action="CategoriesEdit" asp-route-id="@c.Id">Редактировать</a>
+                    <a class="btn btn-primary" asp-action="CategoriesEdit" asp-route-id="@c.Id">Редактировать</a>
                     <form asp-action="CategoriesDelete" method="post" style="display:inline"
                             onsubmit="return confirm('Удалить категорию?');">
                         <input type="hidden" name="id" value="@c.Id" />
