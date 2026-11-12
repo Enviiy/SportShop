@@ -8,7 +8,7 @@ namespace SportShop.Controllers.Admin;
 public partial class AdminController
 {
     // Только Администратор может управлять пользователями (Менеджеру запрещено)
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Manager")]
     public async Task<IActionResult> Users()
     {
         var users = await _userManager.Users.ToListAsync();
@@ -21,7 +21,7 @@ public partial class AdminController
         }
 
         ViewBag.UserRoles = userRoles;
-        // Список всех существующих ролей (Admin, Manager, User)
+        // Список всех существующих ролей (Admin, , User)
         ViewBag.AllRoles = _roleManager.Roles.Select(r => r.Name).ToList();
 
         return View(users);
@@ -29,7 +29,7 @@ public partial class AdminController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Manager")]
     public async Task<IActionResult> UpdateUserRole(string userId, string roleName)
     {
         var user = await _userManager.FindByIdAsync(userId);
@@ -46,7 +46,7 @@ public partial class AdminController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Manager")]
     public async Task<IActionResult> DeleteUser(string userId)
     {
         var user = await _userManager.FindByIdAsync(userId);
